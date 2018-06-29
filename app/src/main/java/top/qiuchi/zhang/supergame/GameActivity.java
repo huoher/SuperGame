@@ -39,6 +39,8 @@ public class GameActivity extends AppCompatActivity {
     private Intent intent1;
     private Intent intent2;
 
+    private int cnt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,7 @@ public class GameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-
+        cnt = 0;
         context = GameActivity.this;
         myDBHelper = new MyDBOpenHelper(context,"my.db",null,1);
         db = myDBHelper.getWritableDatabase();
@@ -120,17 +122,24 @@ public class GameActivity extends AppCompatActivity {
                 re = editText.getText().toString();
             }else {
                 Toast.makeText(this, username + "your score is " + achievement, Toast.LENGTH_SHORT).show();
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("username",username);
-                contentValues.put("achievement",Integer.toString(achievement));
-                db.insert("score",null,contentValues);
+                if (cnt == 0){
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("username",username);
+                    contentValues.put("achievement",Integer.toString(achievement));
+                    db.insert("score",null,contentValues);
+                    cnt = 1;
+                }
+
             }
         }else {
-            Toast.makeText(this, username+" your score is " + achievement, Toast.LENGTH_SHORT).show();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("username",username);
-            contentValues.put("achievement",Integer.toString(achievement));
-            db.insert("score",null,contentValues);
+            Toast.makeText(this, username + " your score is " + achievement, Toast.LENGTH_SHORT).show();
+            if (cnt == 0) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("username", username);
+                contentValues.put("achievement", Integer.toString(achievement));
+                db.insert("score", null, contentValues);
+                cnt = 1;
+            }
         }
 
     }
@@ -148,6 +157,10 @@ public class GameActivity extends AppCompatActivity {
             case R.id.showscore:
                 startActivity(intent1);
                 GameActivity.this.finish();
+                break;
+            case R.id.clear:
+                db.execSQL("DELETE FROM score");
+                Toast.makeText(context, "清空成功", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

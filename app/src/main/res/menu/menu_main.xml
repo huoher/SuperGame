@@ -15,6 +15,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/clear"
+        android:orderInCategory="200"
+        android:title="@string/clear"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/quit"
         android:orderInCategory="200"
         android:title="@string/quit"

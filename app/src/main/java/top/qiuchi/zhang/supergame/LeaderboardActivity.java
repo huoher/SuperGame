@@ -83,6 +83,10 @@ public class LeaderboardActivity extends AppCompatActivity {
             case R.id.showscore:
                 Toast.makeText(context, "您正在查看积分榜", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.clear:
+                db.execSQL("DELETE FROM score");
+                Toast.makeText(context, "清空成功", Toast.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
