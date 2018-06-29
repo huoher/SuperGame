@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.menutest.MainActivity" >
+    <item
+        android:id="@+id/startgame"
+        android:orderInCategory="100"
+        android:title="@string/startgame"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/showscore"
+        android:orderInCategory="200"
+        android:title="@string/showscore"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/quit"
+        android:orderInCategory="200"
+        android:title="@string/quit"
+        app:showAsAction="never" />
+</menu>
