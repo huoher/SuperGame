@@ -46,8 +46,8 @@ public class LeaderboardActivity extends AppCompatActivity {
         myDBHelper = new MyDBOpenHelper(context,"my.db",null,1);
         db = myDBHelper.getWritableDatabase();
 
-        list.add(new Score("zhang","120"));
-        list.add(new Score("wang","60"));
+//        list.add(new Score("zhang","120"));
+//        list.add(new Score("wang","60"));
 
         Cursor cursor = db.query("score", null, null, null, null, null, null);
         if (cursor.moveToFirst()){
@@ -81,13 +81,21 @@ public class LeaderboardActivity extends AppCompatActivity {
                 LeaderboardActivity.this.finish();
                 break;
             case R.id.showscore:
-                Toast.makeText(context, "您正在查看积分榜", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "您正在查看积分榜", Toast.LENGTH_SHORT).show();
+                refresh();
                 break;
             case R.id.clear:
                 db.execSQL("DELETE FROM score");
                 Toast.makeText(context, "清空成功", Toast.LENGTH_SHORT).show();
+                refresh();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh() {
+        finish();
+        Intent intent = new Intent(LeaderboardActivity.this, LeaderboardActivity.class);
+        startActivity(intent);
     }
 }

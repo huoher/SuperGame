@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startall(View view) {
         username = editText.getText().toString();
+        if (username.equals("")){
+            username = "未命名";
+        }
         intent.putExtra("username",username);
 //        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
         startActivity(intent);

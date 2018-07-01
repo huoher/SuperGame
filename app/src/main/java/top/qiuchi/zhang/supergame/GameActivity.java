@@ -148,7 +148,7 @@ public class GameActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.startgame:
-                Toast.makeText(context, "您正在游戏啊", Toast.LENGTH_SHORT).show();
+                refresh();
                 break;
             case R.id.quit:
                 startActivity(intent2);
@@ -164,5 +164,11 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void refresh() {
+        finish();
+        Intent intent = new Intent(GameActivity.this, GameActivity.class);
+        startActivity(intent);
     }
 }
