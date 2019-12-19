@@ -14,9 +14,7 @@
 
 欢迎访问作者微博  [@张秋池](https://weibo.com/zhangqiuchi)
 
-火禾网  [zhang.qiuchi.top](http://zhang.qiuchi.top)
-
-作者博客 [qiuchi.top](http://qiuchi.top)
+作者博客 [qiuchi.top](https://www.cnblogs.com/zhangqiuchi/)
 
 
 
